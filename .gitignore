@@ -1,6 +1,7 @@
-node_modules/
-dist/
-.DS_Store
-Thumbs.db
 *.log
+.DS_Store
 .playground/
+Thumbs.db
+dist/
+node_modules/
+screenshots/

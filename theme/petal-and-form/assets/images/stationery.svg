@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="t">
+<title id="t">A linen-bound sketchbook with an elastic band and a pencil on butter yellow</title>
+<defs>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+<linearGradient id="nb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C88F98"/><stop offset="1" stop-color="#B57C86"/></linearGradient>
+</defs>
+<rect width="800" height="1000" fill="#F5EAC8"/><g transform="rotate(-8 390 480)">
+<ellipse cx="400" cy="500" rx="199.65000000000003" ry="232.32000000000002" fill="#35312F" opacity="0.14" filter="url(#blur)"/>
+<rect x="215.09999999999997" y="244.59999999999997" width="363.00000000000006" height="484.00000000000006" rx="11" fill="#FBF8F3"/>
+<rect x="208.49999999999997" y="237.99999999999997" width="363.00000000000006" height="484.00000000000006" rx="11" fill="url(#nb)"/>
+<rect x="516.5" y="237.99999999999997" width="13.200000000000001" height="484.00000000000006" fill="#8A4E5A"/>
+<rect x="263.5" y="337" width="165" height="77" rx="4.4" fill="#FBF8F3" opacity=".85"/>
+<rect x="285.5" y="364.5" width="110.00000000000001" height="5.5" rx="2" fill="#35312F" opacity=".45"/>
+<rect x="285.5" y="383.2" width="77" height="4.4" rx="2" fill="#35312F" opacity=".25"/>
+</g><g transform="rotate(-24 520 820)">
+<rect x="520" y="811" width="240" height="18" rx="3" fill="#7D9482"/>
+<rect x="752" y="811" width="22" height="18" fill="#77716D" opacity=".6"/>
+<path d="M520 811L486 820L520 829Z" fill="#D9B8A3"/>
+<path d="M498 817L486 820L498 823Z" fill="#35312F"/>
+</g>
+</svg>

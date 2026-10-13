@@ -204,7 +204,6 @@ ul.is-style-pf-checklist li::after {
 }
 
 /* Header icons share a 44px minimum target size (WCAG 2.5.8 recommends ≥ 24px). */
-.pf-header .wp-block-navigation__responsive-container-open,
 .pf-header .wp-block-search__button,
 .pf-header .wc-block-mini-cart__button,
 .pf-header .wp-block-woocommerce-customer-account a {
@@ -232,6 +231,13 @@ ul.is-style-pf-checklist li::after {
 
 .pf-header .wp-block-search__input {
 	border-radius: var(--wp--custom--radius--button);
+}
+
+.pf-header .wp-block-navigation__responsive-container-open {
+	min-height: 44px;
+	min-width: 44px;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Mobile overlay menu: calm, large tap targets, serif links. */
@@ -281,18 +287,26 @@ ul.is-style-pf-checklist li::after {
 
 .pf-tile {
 	border-radius: var(--wp--custom--radius--medium);
-	overflow: hidden;
 	position: relative;
 }
 
-.pf-tile .wp-block-cover__inner-container a::after {
+.pf-tile__title a {
+	text-decoration: none;
+}
+
+.pf-tile .wp-block-image {
+	border-radius: var(--wp--custom--radius--medium);
+	overflow: hidden;
+}
+
+.pf-tile__title a::after {
 	/* Make the whole category tile clickable via its single link (no nested links). */
 	content: "";
 	inset: 0;
 	position: absolute;
 }
 
-.pf-tile .wp-block-cover__inner-container a:focus-visible {
+.pf-tile__title a:focus-visible {
 	outline: none;
 }
 
@@ -673,4 +687,145 @@ ul.is-style-pf-checklist li::after {
 	letter-spacing: 0.06em;
 	padding: 0.2em 0.8em;
 	text-transform: uppercase;
+}
+
+/* Product cards are left-aligned: keep the add-to-cart button with the text. */
+.wc-block-components-product-button {
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.wc-block-product-template .wc-block-components-product-stock-indicator--in-stock,
+.wp-block-woocommerce-product-template .wc-block-components-product-stock-indicator--in-stock {
+	/* "In stock" on every card is noise; only exceptions (out of stock, backorder) are shown. */
+	display: none;
+}
+
+/* Category pills on the shop intro (WooCommerce "Product Categories List" block). */
+.pf-category-pills ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--10);
+	list-style: none;
+	margin: var(--wp--preset--spacing--30) 0 0;
+	padding: 0;
+}
+
+.pf-category-pills li {
+	margin: 0;
+}
+
+.pf-category-pills ul ul {
+	display: none;
+}
+
+.pf-category-pills a {
+	border: 1px solid var(--wp--preset--color--contrast-2);
+	border-radius: var(--wp--custom--radius--button);
+	display: inline-block;
+	font-size: var(--wp--preset--font-size--small);
+	padding: 0.4em 1.1em;
+	text-decoration: none;
+	transition: background-color var(--pf-transition), color var(--pf-transition);
+}
+
+.pf-category-pills a:hover {
+	background: var(--wp--preset--color--contrast);
+	border-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* WooCommerce 11 product-button markup: match its specificity (button inside a flex wrapper). */
+.wp-block-woocommerce-product-button.wc-block-components-product-button {
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.wp-block-woocommerce-product-button .wc-block-components-product-button__button.wp-block-button__link {
+	background: transparent;
+	border: 1px solid var(--wp--preset--color--contrast);
+	border-radius: var(--wp--custom--radius--button);
+	color: var(--wp--preset--color--contrast);
+	padding: 0.6em 1.4em;
+}
+
+.wp-block-woocommerce-product-button .wc-block-components-product-button__button.wp-block-button__link:hover {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* Single product gallery fills its column (WooCommerce's classic gallery defaults to 48% width). */
+.pf-product .woocommerce-product-gallery {
+	float: none !important;
+	margin: 0;
+	width: 100% !important;
+}
+
+.pf-product .woocommerce-product-gallery .flex-control-thumbs {
+	display: flex;
+	gap: var(--wp--preset--spacing--10);
+	list-style: none;
+	margin: var(--wp--preset--spacing--20) 0 0;
+	padding: 0;
+}
+
+.pf-product .woocommerce-product-gallery .flex-control-thumbs li {
+	width: 5rem;
+}
+
+.pf-product .woocommerce-product-gallery .flex-control-thumbs img {
+	border-radius: var(--wp--custom--radius--small);
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.pf-product .woocommerce-product-gallery .flex-control-thumbs img.flex-active,
+.pf-product .woocommerce-product-gallery .flex-control-thumbs img:hover {
+	opacity: 1;
+}
+
+.pf-product .variations select {
+	height: auto;
+	line-height: 1.4;
+	padding: 0.7em 2.5em 0.7em 0.9em;
+}
+
+.pf-product .reset_variations {
+	display: inline-block;
+	font-size: var(--wp--preset--font-size--small);
+	margin-top: var(--wp--preset--spacing--10);
+}
+
+.pf-product .single_add_to_cart_button {
+	min-height: 3rem;
+}
+
+/* Small screens: keep the header to one calm row. */
+@media (max-width: 599px) {
+	.pf-header .wp-block-site-title {
+		font-size: 1.25rem !important;
+		line-height: 1.15;
+	}
+
+	.pf-header__actions {
+		gap: var(--wp--preset--spacing--10) !important;
+	}
+
+	.pf-header .wp-block-navigation__responsive-container-open,
+	.pf-header .wp-block-search__button,
+	.pf-header .wc-block-mini-cart__button {
+		min-width: 40px;
+	}
+}
+
+/* The account icon is hidden on the narrowest screens; "My account" stays reachable from checkout; add it to the menu if needed. */
+@media (max-width: 419px) {
+	.pf-header .wp-block-woocommerce-customer-account {
+		display: none;
+	}
+}
+
+/* The decorative blob may extend past its column; never let it cause horizontal scrolling. */
+.pf-hero {
+	overflow-x: clip;
 }

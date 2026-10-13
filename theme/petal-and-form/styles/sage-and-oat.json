@@ -1,0 +1,78 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Sage & Oat",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Linen white", "color": "#F8F6F0" },
+				{ "slug": "base-2", "name": "Oat", "color": "#EEE9DD" },
+				{ "slug": "tint-1", "name": "Wheat", "color": "#E9E2D0" },
+				{ "slug": "tint-2", "name": "Sage mist", "color": "#DCE5D8" },
+				{ "slug": "tint-3", "name": "Pale moss", "color": "#E3E9DF" },
+				{ "slug": "tint-4", "name": "Barley", "color": "#F2ECD9" },
+				{ "slug": "accent", "name": "Eucalyptus (decorative)", "color": "#7D9482" },
+				{ "slug": "primary", "name": "Fern", "color": "#4F6855" },
+				{ "slug": "contrast", "name": "Bark", "color": "#2F332F" },
+				{ "slug": "contrast-2", "name": "Lichen", "color": "#5C605A" },
+				{ "slug": "border", "name": "Raw linen", "color": "#DDD7C9" }
+			],
+			"gradients": [
+				{
+					"slug": "blush-wash",
+					"name": "Meadow wash",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--tint-2) 0%, var(--wp--preset--color--base) 70%)"
+				},
+				{
+					"slug": "garden-wash",
+					"name": "Harvest wash",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--tint-1) 0%, var(--wp--preset--color--tint-2) 100%)"
+				}
+			]
+		},
+		"custom": {
+			"radius": {
+				"small": "3px",
+				"medium": "6px",
+				"large": "10px",
+				"button": "3px"
+			},
+			"eyebrow": {
+				"letter-spacing": "0.22em",
+				"transform": "uppercase"
+			},
+			"card": {
+				"image-ratio": "1/1"
+			}
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontWeight": "600",
+					"letterSpacing": "0",
+					"lineHeight": "1.12"
+				}
+			},
+			"button": {
+				"typography": {
+					"letterSpacing": "0.08em",
+					"textTransform": "uppercase",
+					"fontSize": "var(--wp--preset--font-size--x-small)",
+					"fontWeight": "600"
+				},
+				"spacing": {
+					"padding": { "top": "1.1em", "bottom": "1.1em", "left": "2em", "right": "2em" }
+				}
+			}
+		},
+		"blocks": {
+			"core/quote": {
+				"border": {
+					"left": { "color": "var(--wp--preset--color--accent)", "width": "3px", "style": "solid" }
+				}
+			}
+		}
+	}
+}

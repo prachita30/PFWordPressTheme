@@ -1,0 +1,27 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"pf-shop","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group pf-shop" style="padding-bottom:var(--wp--preset--spacing--70)">
+	<!-- wp:group {"align":"full","className":"pf-shop__intro","backgroundColor":"base-2","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"},"margin":{"top":"0","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-group alignfull pf-shop__intro has-base-2-background-color has-background" style="margin-top:0;margin-bottom:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)">
+		<!-- wp:woocommerce/breadcrumbs {"align":"wide","fontSize":"x-small"} /-->
+		<!-- wp:query-title {"type":"archive","showPrefix":false,"align":"wide","fontSize":"xx-large"} /-->
+		<!-- wp:term-description {"align":"wide","textColor":"contrast-2"} /-->
+		<!-- wp:woocommerce/product-categories {"align":"wide","hasCount":false,"hasEmpty":false,"className":"pf-category-pills"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:woocommerce/store-notices {"align":"wide"} /-->
+
+	<!-- wp:group {"align":"wide","className":"pf-shop__toolbar","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group alignwide pf-shop__toolbar" style="margin-bottom:var(--wp--preset--spacing--40)">
+		<!-- wp:woocommerce/product-results-count {"fontSize":"small"} /-->
+		<!-- wp:woocommerce/catalog-sorting {"fontSize":"small"} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:pattern {"slug":"petal-and-form/product-grid"} /-->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

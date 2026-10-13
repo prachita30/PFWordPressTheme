@@ -1,0 +1,43 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Petal & Form — demo store",
+		"author": "petal-and-form",
+		"description": "WordPress + WooCommerce + Petal & Form with the demo store seeded. Expects the theme mounted at wp-content/themes/petal-and-form and the repo's demo/ folder mounted at /demo."
+	},
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"login": true,
+	"steps": [
+		{
+			"step": "defineWpConfigConsts",
+			"consts": {
+				"WP_DEBUG": true,
+				"WP_DEBUG_DISPLAY": true,
+				"WP_DEVELOPMENT_MODE": "theme",
+				"PLAYGROUND_FORCE_AUTO_LOGIN_ENABLED": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "activateTheme",
+			"themeFolderName": "petal-and-form"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/wordpress/wp-load.php'; require '/demo/seed.php';"
+		}
+	]
+}

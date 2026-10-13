@@ -65,6 +65,54 @@ function petal_and_form_register_pattern_categories() {
 add_action( 'init', 'petal_and_form_register_pattern_categories' );
 
 /**
+ * Link to a product category if it exists, otherwise to the shop (or the home page without WooCommerce).
+ *
+ * Used by patterns so starter links point somewhere useful on any site. The URL is resolved when the
+ * pattern is inserted; editing the link in the editor replaces it.
+ *
+ * @param string $category_slug Product category slug.
+ * @return string URL.
+ */
+function petal_and_form_shop_link( $category_slug = '' ) {
+	if ( $category_slug && taxonomy_exists( 'product_cat' ) ) {
+		$term = get_term_by( 'slug', $category_slug, 'product_cat' );
+		if ( $term ) {
+			$link = get_term_link( $term );
+			if ( ! is_wp_error( $link ) ) {
+				return $link;
+			}
+		}
+	}
+
+	if ( function_exists( 'wc_get_page_permalink' ) ) {
+		return wc_get_page_permalink( 'shop' );
+	}
+
+	return home_url( '/' );
+}
+
+/**
+ * Link to a page by its path (slug) if it exists, otherwise to the home page.
+ *
+ * @param string $path Page path, e.g. 'contact'.
+ * @return string URL.
+ */
+function petal_and_form_page_link( $path ) {
+	$page = get_page_by_path( $path );
+
+	return $page ? get_permalink( $page ) : home_url( '/' );
+}
+
+/**
+ * Whether WooCommerce is active. Product patterns render nothing without it.
+ *
+ * @return bool
+ */
+function petal_and_form_has_woocommerce() {
+	return class_exists( 'WooCommerce' );
+}
+
+/**
  * Register block styles. Their CSS lives in assets/css/theme.css.
  */
 function petal_and_form_register_block_styles() {

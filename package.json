@@ -1,0 +1,22 @@
+{
+	"name": "petal-and-form",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Development scripts for the Petal & Form WordPress block theme. The theme itself has no build step and no runtime Node dependencies.",
+	"license": "GPL-2.0-or-later",
+	"type": "module",
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"test": "npm run validate && npm run contrast",
+		"validate": "node tests/scripts/validate.mjs",
+		"contrast": "node tests/scripts/contrast.mjs",
+		"smoke": "node tests/scripts/smoke.mjs http://127.0.0.1:9400 --woo",
+		"smoke:core": "node tests/scripts/smoke.mjs http://127.0.0.1:9401",
+		"playground": "npx --yes @wp-playground/cli@3.1.58 server --port=9400 --mount=./theme/petal-and-form:/wordpress/wp-content/themes/petal-and-form --mount=./demo:/demo --blueprint=./tests/blueprint.json",
+		"playground:core": "npx --yes @wp-playground/cli@3.1.58 server --port=9401 --mount=./theme/petal-and-form:/wordpress/wp-content/themes/petal-and-form --blueprint=./tests/blueprint-core.json",
+		"illustrations": "node tools/illustrations.mjs",
+		"zip": "node tests/scripts/package.mjs"
+	}
+}

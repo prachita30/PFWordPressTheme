@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="t">
+<title id="t">A hand-poured candle in a frosted jar on a powder pink background</title>
+<defs>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+<linearGradient id="j" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FBF3EE"/><stop offset="1" stop-color="#EAD3CC"/></linearGradient><radialGradient id="flame" cx=".5" cy=".75" r=".7"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".55" stop-color="#F5C97A"/><stop offset="1" stop-color="#E39A5B"/></radialGradient>
+</defs>
+<rect width="800" height="1000" fill="#F1DDE1"/>
+<rect y="760" width="800" height="240" fill="#E8CCD2"/>
+<rect y="760" width="800" height="2" fill="#000" opacity=".04"/><circle cx="400" cy="420" r="230" fill="#F6E7EA"/><ellipse cx="400" cy="760" rx="153" ry="14" fill="#35312F" opacity="0.16" filter="url(#blur)"/>
+<rect x="272.5" y="437" width="255" height="323" rx="37.4" fill="url(#j)"/>
+<rect x="286.1" y="481.2" width="227.8" height="30.599999999999998" rx="13.6" fill="#FBF8F3"/>
+<rect x="309.9" y="559.74" width="180.2" height="116.28" rx="10.2" fill="#C88F98"/>
+<rect x="349" y="598.5" width="102" height="6.8" rx="2" fill="#35312F" opacity=".5"/>
+<rect x="366" y="624.34" width="68" height="5.1" rx="2" fill="#35312F" opacity=".3"/>
+<rect x="397.45" y="447.2" width="5.1" height="37.4" fill="#35312F"/>
+<path d="M400 355.4C427.2 403 423.8 450.6 400 450.6C376.2 450.6 372.8 403 400 355.4Z" fill="url(#flame)"/>
+<circle cx="400" cy="413.2" r="68" fill="#F5EAC8" opacity=".35" filter="url(#blur)"/>
+</svg>

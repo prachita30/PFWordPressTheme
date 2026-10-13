@@ -1,0 +1,90 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Lavender Studio",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "name": "Paper", "color": "#FCFAF6" },
+				{ "slug": "base-2", "name": "Lilac milk", "color": "#F4F0F8" },
+				{ "slug": "tint-1", "name": "Lavender haze", "color": "#E8E1F1" },
+				{ "slug": "tint-2", "name": "Butter", "color": "#F5EAC8" },
+				{ "slug": "tint-3", "name": "Powder pink", "color": "#F1DDE1" },
+				{ "slug": "tint-4", "name": "Mint cream", "color": "#DCEBE2" },
+				{ "slug": "accent", "name": "Wisteria (decorative)", "color": "#A893C7" },
+				{ "slug": "primary", "name": "Violet ink", "color": "#664F84" },
+				{ "slug": "contrast", "name": "Night plum", "color": "#322F38" },
+				{ "slug": "contrast-2", "name": "Dusk", "color": "#5D5866" },
+				{ "slug": "border", "name": "Lilac line", "color": "#E2DAEC" }
+			],
+			"gradients": [
+				{
+					"slug": "blush-wash",
+					"name": "Lilac wash",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--tint-1) 0%, var(--wp--preset--color--tint-2) 100%)"
+				},
+				{
+					"slug": "garden-wash",
+					"name": "Sorbet wash",
+					"gradient": "linear-gradient(160deg, var(--wp--preset--color--tint-3) 0%, var(--wp--preset--color--tint-1) 100%)"
+				}
+			]
+		},
+		"custom": {
+			"radius": {
+				"small": "12px",
+				"medium": "24px",
+				"large": "40px",
+				"button": "999px"
+			},
+			"eyebrow": {
+				"letter-spacing": "0.08em",
+				"transform": "none"
+			},
+			"card": {
+				"image-ratio": "4/5"
+			}
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontWeight": "500",
+					"letterSpacing": "-0.025em",
+					"lineHeight": "1.04"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--base)"
+				},
+				"border": { "color": "var(--wp--preset--color--primary)" },
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--contrast)",
+						"text": "var(--wp--preset--color--base)"
+					},
+					"border": { "color": "var(--wp--preset--color--contrast)" }
+				},
+				":focus": {
+					"color": {
+						"background": "var(--wp--preset--color--contrast)",
+						"text": "var(--wp--preset--color--base)"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/site-title": {
+				"typography": { "fontStyle": "italic" }
+			},
+			"core/quote": {
+				"border": {
+					"left": { "color": "var(--wp--preset--color--tint-2)", "width": "6px", "style": "solid" }
+				}
+			}
+		}
+	}
+}
