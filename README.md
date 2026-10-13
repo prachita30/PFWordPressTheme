@@ -117,7 +117,7 @@ More detail: [docs/test-results.md](docs/test-results.md) and [docs/roadmap.md](
 
 ## Contributing
 
-Contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) and the
+Contributions are welcome see [CONTRIBUTING.md](CONTRIBUTING.md) and the
 [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately per [SECURITY.md](SECURITY.md).
 
 ## License
