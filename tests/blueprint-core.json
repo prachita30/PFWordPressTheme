@@ -1,0 +1,11 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": { "title": "Petal & Form — core only (no WooCommerce)", "author": "petal-and-form" },
+	"landingPage": "/",
+	"preferredVersions": { "php": "8.3", "wp": "latest" },
+	"login": true,
+	"steps": [
+		{ "step": "defineWpConfigConsts", "consts": { "WP_DEBUG": true, "WP_DEBUG_DISPLAY": true, "SCRIPT_DEBUG": false } },
+		{ "step": "activateTheme", "themeFolderName": "petal-and-form" }
+	]
+}

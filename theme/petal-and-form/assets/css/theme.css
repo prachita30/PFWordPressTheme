@@ -1,0 +1,676 @@
+/**
+ * Petal & Form — theme.css
+ *
+ * Only what theme.json cannot express cleanly. Every value comes from a design token
+ * (var(--wp--preset--*) or var(--wp--custom--*)) so style variations restyle everything.
+ *
+ * Sections
+ *  1. Foundations (selection, focus, links)
+ *  2. Motion (+ reduced motion)
+ *  3. Block styles registered in functions.php
+ *  4. Header & navigation
+ *  5. Cards, media and hover states
+ *  6. Inspiration board
+ *  7. Forms
+ *  8. WooCommerce
+ *  9. Utilities
+ */
+
+/* 1. Foundations ------------------------------------------------------------ */
+
+:root {
+	--pf-focus-ring: 2px solid var(--wp--preset--color--contrast);
+	--pf-focus-offset: 3px;
+	--pf-transition: var(--wp--custom--motion--duration, 220ms) var(--wp--custom--motion--ease, ease);
+}
+
+::selection {
+	background: var(--wp--preset--color--tint-1);
+	color: var(--wp--preset--color--contrast);
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Comfortable reading measure for running text inside constrained layouts. */
+.wp-block-post-content > p,
+.wp-block-post-content > ul,
+.wp-block-post-content > ol {
+	max-width: min(44rem, 100%);
+}
+
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+	transition: color var(--pf-transition), text-decoration-color var(--pf-transition);
+}
+
+/* One visible, consistent focus indicator everywhere (WCAG 2.4.7 / 2.4.11). */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible,
+.wp-element-button:focus-visible,
+.wp-block-button__link:focus-visible {
+	outline: var(--pf-focus-ring);
+	outline-offset: var(--pf-focus-offset);
+	box-shadow: none;
+}
+
+/* Buttons: smooth state changes; outline style uses tokens. */
+.wp-element-button,
+.wp-block-button__link {
+	transition: background-color var(--pf-transition), color var(--pf-transition), border-color var(--pf-transition), transform var(--pf-transition);
+}
+
+.wp-element-button:active,
+.wp-block-button__link:active {
+	transform: translateY(1px);
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link {
+	background: transparent;
+	border: 1px solid currentColor;
+	color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background: var(--wp--preset--color--contrast);
+	border-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+:where(button, .wp-element-button)[disabled],
+:where(button, .wp-element-button)[aria-disabled="true"] {
+	cursor: not-allowed;
+	opacity: 0.55;
+}
+
+/* 2. Motion -------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+/* 3. Block styles ---------------------------------------------------------- */
+
+/* Paragraph → Eyebrow: small uppercase label above headings. Also used on post terms. */
+.is-style-pf-eyebrow {
+	color: var(--wp--preset--color--contrast-2);
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 600;
+	letter-spacing: var(--wp--custom--eyebrow--letter-spacing, 0.16em);
+	line-height: 1.4;
+	text-transform: var(--wp--custom--eyebrow--transform, uppercase);
+}
+
+.is-style-pf-eyebrow a {
+	text-decoration: none;
+}
+
+/* Heading → Italic accent: <em> inside the heading becomes the decorative accent colour.
+   Uses --primary (text-safe) rather than the decorative --accent for contrast. */
+.is-style-pf-italic-accent em,
+h1 em,
+h2 em {
+	color: var(--wp--preset--color--primary);
+	font-style: italic;
+	font-weight: 500;
+}
+
+/* Group → Card */
+.wp-block-group.is-style-pf-card {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--border);
+	border-radius: var(--wp--custom--radius--medium);
+	box-shadow: var(--wp--preset--shadow--soft);
+	padding: var(--wp--preset--spacing--50);
+}
+
+/* Image → Arch: the signature arched frame. */
+.wp-block-image.is-style-pf-arch img {
+	border-radius: 999px 999px var(--wp--custom--radius--medium) var(--wp--custom--radius--medium);
+}
+
+/* List → Checklist */
+ul.is-style-pf-checklist {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+ul.is-style-pf-checklist li {
+	padding-inline-start: 1.75em;
+	position: relative;
+}
+
+ul.is-style-pf-checklist li + li {
+	margin-block-start: 0.5em;
+}
+
+ul.is-style-pf-checklist li::before {
+	background: var(--wp--preset--color--tint-2);
+	border-radius: 50%;
+	content: "";
+	height: 1.1em;
+	inset-inline-start: 0;
+	position: absolute;
+	top: 0.3em;
+	width: 1.1em;
+}
+
+ul.is-style-pf-checklist li::after {
+	border-block-end: 1.5px solid var(--wp--preset--color--contrast);
+	border-inline-end: 1.5px solid var(--wp--preset--color--contrast);
+	content: "";
+	height: 0.5em;
+	inset-inline-start: 0.4em;
+	position: absolute;
+	top: 0.45em;
+	transform: rotate(45deg);
+	width: 0.28em;
+}
+
+/* Navigation → Underline on hover */
+.wp-block-navigation.is-style-pf-underline .wp-block-navigation-item__content {
+	background-image: linear-gradient(currentColor, currentColor);
+	background-position: 0 100%;
+	background-repeat: no-repeat;
+	background-size: 0 1px;
+	padding-block: 0.25em;
+	transition: background-size var(--pf-transition);
+}
+
+.wp-block-navigation.is-style-pf-underline .wp-block-navigation-item__content:hover,
+.wp-block-navigation.is-style-pf-underline .current-menu-item > .wp-block-navigation-item__content {
+	background-size: 100% 1px;
+}
+
+/* 4. Header & navigation ---------------------------------------------------- */
+
+.pf-header .wp-block-site-title a {
+	text-decoration: none;
+}
+
+.pf-header__actions {
+	align-items: center;
+}
+
+/* Header icons share a 44px minimum target size (WCAG 2.5.8 recommends ≥ 24px). */
+.pf-header .wp-block-navigation__responsive-container-open,
+.pf-header .wp-block-search__button,
+.pf-header .wc-block-mini-cart__button,
+.pf-header .wp-block-woocommerce-customer-account a {
+	align-items: center;
+	display: inline-flex;
+	justify-content: center;
+	min-height: 44px;
+	min-width: 44px;
+}
+
+.pf-header .wp-block-search__button {
+	background: transparent;
+	border: 0;
+	color: var(--wp--preset--color--contrast);
+	padding: 0;
+}
+
+.pf-header .wp-block-search__button:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.pf-header .wp-block-search.wp-block-search__searchfield-hidden .wp-block-search__input {
+	border-width: 0;
+}
+
+.pf-header .wp-block-search__input {
+	border-radius: var(--wp--custom--radius--button);
+}
+
+/* Mobile overlay menu: calm, large tap targets, serif links. */
+.wp-block-navigation__responsive-container.is-menu-open {
+	padding: var(--wp--preset--spacing--50);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	gap: var(--wp--preset--spacing--30);
+	padding-top: var(--wp--preset--spacing--60);
+}
+
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+/* Optional announcement bar (pattern: petal-and-form/announcement-bar). */
+.pf-announcement a {
+	text-underline-offset: 0.25em;
+}
+
+/* 5. Cards, media and hover states ------------------------------------------- */
+
+.wp-block-post-featured-image img,
+.wp-block-image img,
+.wc-block-components-product-image img,
+.wc-block-grid__product-image img {
+	transition: transform 600ms var(--wp--custom--motion--ease, ease), opacity var(--pf-transition);
+}
+
+.wp-block-post-featured-image,
+.wc-block-components-product-image {
+	overflow: hidden;
+}
+
+/* Hover zoom only on devices that can hover; never required to use the site. */
+@media (hover: hover) {
+	.pf-hover-lift a:hover img,
+	.wp-block-post-featured-image a:hover img,
+	.wc-block-components-product-image a:hover img {
+		transform: scale(1.035);
+	}
+}
+
+.pf-tile {
+	border-radius: var(--wp--custom--radius--medium);
+	overflow: hidden;
+	position: relative;
+}
+
+.pf-tile .wp-block-cover__inner-container a::after {
+	/* Make the whole category tile clickable via its single link (no nested links). */
+	content: "";
+	inset: 0;
+	position: absolute;
+}
+
+.pf-tile .wp-block-cover__inner-container a:focus-visible {
+	outline: none;
+}
+
+.pf-tile:focus-within {
+	outline: var(--pf-focus-ring);
+	outline-offset: var(--pf-focus-offset);
+}
+
+/* Soft decorative blob behind hero images. */
+.pf-blob {
+	position: relative;
+	isolation: isolate;
+}
+
+.pf-blob::before {
+	aspect-ratio: 1;
+	background: var(--wp--preset--color--tint-1);
+	border-radius: 58% 42% 55% 45% / 48% 55% 45% 52%;
+	content: "";
+	inset: 8% -6% auto auto;
+	position: absolute;
+	width: 70%;
+	z-index: -1;
+}
+
+/* 6. Inspiration board ------------------------------------------------------ */
+
+/* Pinterest-inspired masonry via CSS columns: editorial content only, never the shop grid. */
+.pf-board {
+	column-count: 1;
+	column-gap: var(--wp--preset--spacing--40);
+}
+
+.pf-board > * {
+	break-inside: avoid;
+	margin-block: 0 var(--wp--preset--spacing--40) !important;
+}
+
+@media (min-width: 600px) {
+	.pf-board {
+		column-count: 2;
+	}
+}
+
+@media (min-width: 1000px) {
+	.pf-board {
+		column-count: 3;
+	}
+}
+
+@media (min-width: 1400px) {
+	.pf-board.alignfull,
+	.pf-board.is-columns-4 {
+		column-count: 4;
+	}
+}
+
+.pf-board .wp-block-image {
+	margin-block-end: var(--wp--preset--spacing--40);
+}
+
+.pf-board .wp-block-image figcaption {
+	margin-block-start: var(--wp--preset--spacing--10);
+	text-align: start;
+}
+
+.pf-board__note {
+	border-radius: var(--wp--custom--radius--medium);
+	padding: var(--wp--preset--spacing--50);
+}
+
+/* 7. Forms ----------------------------------------------------------------------- */
+
+:where(input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], select, textarea):not(.wc-block-components-text-input input) {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--contrast-2);
+	border-radius: var(--wp--custom--radius--small);
+	color: var(--wp--preset--color--contrast);
+	font: inherit;
+	padding: 0.7em 0.9em;
+}
+
+::placeholder {
+	color: var(--wp--preset--color--contrast-2);
+	opacity: 1;
+}
+
+.wp-block-search__inside-wrapper {
+	border-radius: var(--wp--custom--radius--button);
+}
+
+/* 8. WooCommerce ------------------------------------------------------------------ */
+
+/* Product cards: predictable ratio, calm typography. */
+.wp-block-woocommerce-product-template .wc-block-components-product-image,
+.wc-block-product-template .wc-block-components-product-image {
+	border-radius: var(--wp--custom--radius--medium);
+}
+
+.wc-block-components-product-image img {
+	aspect-ratio: var(--wp--custom--card--image-ratio, 4/5);
+	object-fit: cover;
+	width: 100%;
+}
+
+.wp-block-woocommerce-product-template .wp-block-post-title,
+.wc-block-product-template .wp-block-post-title {
+	font-family: var(--wp--preset--font-family--heading);
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+.wp-block-post-title a {
+	text-decoration: none;
+}
+
+.wc-block-components-product-price,
+.wp-block-woocommerce-product-price {
+	font-variant-numeric: tabular-nums;
+}
+
+.wc-block-components-product-price del {
+	color: var(--wp--preset--color--contrast-2);
+	font-weight: 400;
+}
+
+.wc-block-components-product-price ins {
+	color: var(--wp--preset--color--primary);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+/* Sale badge: pastel pill with dark text (contrast checked in tests/scripts/contrast.mjs). */
+.wc-block-components-product-sale-badge,
+.wp-block-woocommerce-product-sale-badge .wc-block-components-product-sale-badge {
+	background: var(--wp--preset--color--tint-1);
+	border: 0;
+	border-radius: var(--wp--custom--radius--button);
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	padding: 0.35em 0.9em;
+	text-transform: uppercase;
+}
+
+.wc-block-components-product-image .wc-block-components-product-sale-badge {
+	inset: var(--wp--preset--spacing--20) auto auto var(--wp--preset--spacing--20);
+	position: absolute;
+}
+
+/* Stock states use text + colour, never colour alone. */
+.wc-block-components-product-stock-indicator,
+.stock {
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 500;
+}
+
+.wc-block-components-product-stock-indicator--out-of-stock,
+.stock.out-of-stock {
+	color: var(--wp--preset--color--primary);
+}
+
+.wc-block-components-product-stock-indicator--in-stock,
+.stock.in-stock {
+	color: var(--wp--preset--color--contrast);
+}
+
+/* WooCommerce buttons pick up the theme button tokens. */
+.wc-block-components-product-button .wp-block-button__link,
+.wc-block-components-button:not(.is-link),
+.wp-block-woocommerce-product-button .wp-block-button__link,
+.single_add_to_cart_button,
+.woocommerce button.button,
+.woocommerce a.button {
+	border-radius: var(--wp--custom--radius--button) !important;
+}
+
+.wc-block-components-button:not(.is-link) {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+	font-weight: 500;
+	min-height: 3rem;
+}
+
+.wc-block-components-button:not(.is-link):hover {
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+}
+
+.wc-block-components-product-button .wp-block-button__link {
+	background: transparent;
+	border: 1px solid var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--small);
+	padding: 0.65em 1.4em;
+}
+
+.wc-block-components-product-button .wp-block-button__link:hover {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* "Added to cart" confirmation: subtle, and announced by WooCommerce's own live region. */
+.wc-block-components-product-button .wc-block-components-product-button__button.added::after,
+.wc-block-components-product-button__button.added::after {
+	content: " ✓";
+}
+
+.wc-block-components-product-button a.added_to_cart {
+	display: inline-block;
+	font-size: var(--wp--preset--font-size--small);
+	margin-top: var(--wp--preset--spacing--10);
+}
+
+/* Single product */
+.pf-product .wp-block-woocommerce-product-image-gallery img,
+.pf-product .woocommerce-product-gallery img,
+.pf-product .wp-block-woocommerce-product-gallery img {
+	border-radius: var(--wp--custom--radius--medium);
+}
+
+.pf-product .quantity .qty {
+	border-radius: var(--wp--custom--radius--button);
+	min-height: 3rem;
+	text-align: center;
+	width: 4.5em;
+}
+
+.pf-product form.cart {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--20);
+}
+
+.pf-product .variations {
+	border-collapse: collapse;
+	margin-block-end: var(--wp--preset--spacing--30);
+	width: 100%;
+}
+
+.pf-product .variations th,
+.pf-product .variations td {
+	display: block;
+	padding: 0 0 var(--wp--preset--spacing--10);
+	text-align: start;
+}
+
+.pf-product .variations select {
+	min-height: 3rem;
+	width: 100%;
+}
+
+.pf-product .woocommerce-tabs ul.tabs,
+.wp-block-woocommerce-product-details ul.tabs {
+	border-bottom: 1px solid var(--wp--preset--color--border);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--40);
+	list-style: none;
+	margin: 0 0 var(--wp--preset--spacing--40);
+	padding: 0;
+}
+
+.wp-block-woocommerce-product-details ul.tabs li a {
+	display: inline-block;
+	font-weight: 500;
+	padding-block: var(--wp--preset--spacing--20);
+	text-decoration: none;
+}
+
+.wp-block-woocommerce-product-details ul.tabs li.active a {
+	box-shadow: inset 0 -2px 0 var(--wp--preset--color--contrast);
+}
+
+/* Notices: icon/label + colour, readable on pastel. */
+.wc-block-components-notice-banner {
+	border-radius: var(--wp--custom--radius--small);
+}
+
+.wc-block-components-notice-banner.is-error {
+	background: var(--wp--preset--color--tint-1);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--contrast);
+}
+
+.wc-block-components-notice-banner.is-success,
+.wc-block-components-notice-banner.is-info {
+	background: var(--wp--preset--color--tint-2);
+	color: var(--wp--preset--color--contrast);
+}
+
+/* Cart & checkout */
+.wc-block-cart,
+.wc-block-checkout {
+	--pf-panel: var(--wp--preset--color--base-2);
+}
+
+.wp-block-woocommerce-cart-order-summary-block,
+.wp-block-woocommerce-checkout-order-summary-block {
+	background: var(--pf-panel);
+	border-radius: var(--wp--custom--radius--medium);
+	padding: var(--wp--preset--spacing--40);
+}
+
+.wc-block-components-totals-wrapper,
+.wc-block-components-order-summary-item {
+	border-color: var(--wp--preset--color--border) !important;
+}
+
+.wc-block-components-text-input input,
+.wc-block-components-combobox .wc-block-components-combobox-control input,
+.wc-blocks-components-select__select {
+	border-color: var(--wp--preset--color--contrast-2) !important;
+	border-radius: var(--wp--custom--radius--small) !important;
+}
+
+.wc-block-components-validation-error {
+	color: var(--wp--preset--color--primary);
+	font-weight: 500;
+}
+
+.wc-block-components-quantity-selector {
+	border-radius: var(--wp--custom--radius--button) !important;
+}
+
+/* Empty cart / no products: gentle empty state. */
+.wc-block-cart__empty-cart__title,
+.wc-block-product-collection__no-results,
+.wp-block-woocommerce-empty-cart-block > h2 {
+	font-family: var(--wp--preset--font-family--heading);
+}
+
+.wc-block-mini-cart__badge {
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+}
+
+/* 9. Utilities -------------------------------------------------------------- */
+
+.pf-ratio-portrait img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+.pf-ratio-square img {
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+.pf-stack-mobile-reverse {
+	/* Columns that show image first on mobile. */
+}
+
+@media (max-width: 781px) {
+	.pf-stack-mobile-reverse {
+		flex-direction: column-reverse;
+	}
+
+	.pf-hide-mobile {
+		display: none !important;
+	}
+}
+
+.pf-rounded {
+	border-radius: var(--wp--custom--radius--large);
+	overflow: hidden;
+}
+
+.pf-demo-label {
+	background: var(--wp--preset--color--tint-4);
+	border-radius: var(--wp--custom--radius--button);
+	color: var(--wp--preset--color--contrast);
+	display: inline-block;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	padding: 0.2em 0.8em;
+	text-transform: uppercase;
+}
