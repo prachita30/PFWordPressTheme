@@ -25,12 +25,15 @@ performance measurements.
 | T-INS-01 | Theme activates; 7 core routes return expected status with no PHP notices; header/footer/CSS present | `npm run smoke:core` |
 | T-INS-02 | Same plus 9 WooCommerce routes (shop, product search, category, simple/variable/out-of-stock product, cart, checkout, account) | `npm run smoke` |
 | T-INS-03 | No fatal errors when WooCommerce is inactive (product patterns render nothing; header icons omitted) | `npm run smoke:core` |
-| T-EDT-01 | Every registered pattern parses as **valid** blocks in the editor | Snippet below, run in the editor's browser console |
+| T-EDT-01 | Every pattern and template parses as **valid** (and current) blocks in the editor | `node tests/scripts/editor-validate.mjs [url]` |
+| T-INS-04 | Packaged zip installs and activates on a fresh site | `npm run zip`, then Playground with `tests/blueprint-zip.json` + `npm run smoke` against it |
+| T-RES-01..05 | No horizontal overflow at 320–1280px on 13 routes | `node tests/scripts/responsive.mjs [url] [--shots=dir]` |
+| T-VAR-01..03 | Screenshots of each style variation | `node tests/scripts/variation-shots.mjs [url]` (slow in Playground; can be done by hand in Editor → Styles) |
 | T-VIS-* | Full-page screenshots at 1440/1024/768 | `node tests/scripts/screenshots.mjs` |
 
-### T-EDT-01 — block validation snippet
+### T-EDT-01 — manual alternative
 
-Open `/wp-admin/site-editor.php` (logged in), wait for it to load, then run in the console:
+The script above is preferred. To check by hand, open `/wp-admin/site-editor.php` (logged in), wait for it to load, then run in the console:
 
 ```js
 const pats = await wp.apiFetch( { path: '/wp/v2/block-patterns/patterns' } );

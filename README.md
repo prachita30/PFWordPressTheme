@@ -73,6 +73,8 @@ npm test                 # static checks + colour contrast (no WordPress needed)
 npm run smoke            # 16 routes against the running store (start `npm run playground` first)
 npm run smoke:core       # 7 routes against the site without WooCommerce
 node tests/scripts/responsive.mjs   # overflow check at 320–1280px via headless Chrome
+node tests/scripts/editor-validate.mjs  # every pattern/template parsed by the real block editor
+npm run zip              # validate, then build dist/petal-and-form-<version>.zip
 ```
 
 The full plan, including manual keyboard and screen-reader checks, is in

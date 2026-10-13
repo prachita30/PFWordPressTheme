@@ -24,7 +24,7 @@
 
 		<!-- wp:group {"className":"pf-header__actions","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
 		<div class="wp-block-group pf-header__actions">
-			<!-- wp:navigation {"className":"is-style-pf-underline","overlayBackgroundColor":"base","overlayTextColor":"contrast","layout":{"type":"flex","justifyContent":"right"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} /-->
+			<!-- wp:navigation {"ariaLabel":"<?php echo esc_attr__( 'Main', 'petal-and-form' ); ?>","className":"is-style-pf-underline","overlayBackgroundColor":"base","overlayTextColor":"contrast","layout":{"type":"flex","justifyContent":"right"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} /-->
 
 			<!-- wp:search {"label":"<?php echo esc_attr_x( 'Search', 'search form label', 'petal-and-form' ); ?>","showLabel":false,"placeholder":"<?php echo esc_attr_x( 'Search the shop…', 'search placeholder', 'petal-and-form' ); ?>","buttonText":"<?php echo esc_attr_x( 'Search', 'search button text', 'petal-and-form' ); ?>","buttonPosition":"button-only","buttonUseIcon":true,"isSearchFieldHidden":true,"className":"pf-header__search"} /-->
 
