@@ -63,11 +63,11 @@ try {
 		console.log( `Note: blocks not registered on this site (e.g. WooCommerce inactive): ${ report.unregistered.join( ', ' ) }` );
 	}
 	report.invalid.forEach( ( line ) => console.log( 'INVALID   ' + line ) );
-	report.outdated.forEach( ( line ) => console.log( 'OUTDATED  ' + line + ' (accepted via a block deprecation; re-save to update markup)' ) );
+	report.outdated.forEach( ( line ) => console.log( 'OUTDATED  ' + line + ' (warning: accepted via a block deprecation, re-saving updates the markup)' ) );
 	console.log( `
 ${ report.invalid.length } invalid, ${ report.outdated.length } outdated, ${ report.blocks - report.invalid.length - report.outdated.length } current.` );
 	browser.close();
-	process.exit( report.invalid.length || report.outdated.length ? 1 : 0 );
+	process.exit( report.invalid.length ? 1 : 0 ); // Outdated markup is a warning: WooCommerce's own templates use some deprecated forms.
 } catch ( error ) {
 	console.error( error.message );
 	browser.close();

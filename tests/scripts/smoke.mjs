@@ -74,6 +74,10 @@ for ( const route of routes ) {
 	if ( html && ! html.includes( 'pf-footer' ) ) {
 		problems.push( 'footer markup missing' );
 	}
+	const accountIcons = ( html.match( /class="[^"]*wp-block-woocommerce-customer-account/g ) || [] ).length;
+	if ( accountIcons > 1 ) {
+		problems.push( `${ accountIcons } account icons rendered (expected at most 1)` );
+	}
 	if ( html && route.marker && ! new RegExp( route.marker ).test( html ) ) {
 		problems.push( `expected marker /${ route.marker }/ not found` );
 	}

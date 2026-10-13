@@ -113,6 +113,24 @@ function petal_and_form_has_woocommerce() {
 }
 
 /**
+ * The header pattern already places the account and mini-cart blocks, so stop WooCommerce from
+ * auto-inserting a second copy next to the navigation block (WordPress "block hooks").
+ *
+ * @param string[] $hooked_blocks Block types hooked at this position.
+ * @param string   $position      Relative position.
+ * @param string   $anchor_block  Anchor block type.
+ * @return string[]
+ */
+function petal_and_form_skip_hooked_store_icons( $hooked_blocks, $position, $anchor_block ) {
+	if ( 'core/navigation' === $anchor_block ) {
+		$hooked_blocks = array_values( array_diff( $hooked_blocks, array( 'woocommerce/customer-account', 'woocommerce/mini-cart' ) ) );
+	}
+
+	return $hooked_blocks;
+}
+add_filter( 'hooked_block_types', 'petal_and_form_skip_hooked_store_icons', 10, 3 );
+
+/**
  * Register block styles. Their CSS lives in assets/css/theme.css.
  */
 function petal_and_form_register_block_styles() {

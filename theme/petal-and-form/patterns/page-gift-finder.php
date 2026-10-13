@@ -65,7 +65,7 @@ $petal_and_form_search     = static function ( $term ) {
 	<!-- wp:heading {"textAlign":"center","className":"is-style-pf-italic-accent","anchor":"by-recipient","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} -->
 	<h2 class="wp-block-heading has-text-align-center is-style-pf-italic-accent" id="by-recipient" style="margin-bottom:var(--wp--preset--spacing--50)"><?php echo wp_kses( __( 'Gifts by <em>recipient</em>', 'petal-and-form' ), array( 'em' => array() ) ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"12rem"}} -->
+	<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"8.5rem"}} -->
 	<div class="wp-block-group alignwide">
 		<?php foreach ( $petal_and_form_recipients as $petal_and_form_r ) : ?>
 		<!-- wp:group {"className":"pf-tile pf-hover-lift","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->

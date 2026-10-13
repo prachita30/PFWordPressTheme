@@ -829,3 +829,17 @@ ul.is-style-pf-checklist li::after {
 .pf-hero {
 	overflow-x: clip;
 }
+
+/* Spacing for WooCommerce blocks whose markup does not store margins. */
+.pf-product .wp-block-woocommerce-product-details,
+.pf-related {
+	margin-block-start: var(--wp--preset--spacing--70);
+}
+
+/* Keep an error border on invalid checkout fields (in addition to WooCommerce's text + icon). */
+.wc-block-components-text-input.has-error input,
+.wc-block-components-combobox.has-error input,
+.wc-blocks-components-select.has-error .wc-blocks-components-select__select {
+	border-color: var(--wp--preset--color--primary) !important;
+	border-width: 2px !important;
+}

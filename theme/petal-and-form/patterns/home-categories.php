@@ -61,7 +61,7 @@ $petal_and_form_tiles = array(
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"12rem"}} -->
+	<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"8.5rem"}} -->
 	<div class="wp-block-group alignwide">
 		<?php foreach ( $petal_and_form_tiles as $petal_and_form_tile ) : ?>
 		<!-- wp:group {"className":"pf-tile pf-hover-lift","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
