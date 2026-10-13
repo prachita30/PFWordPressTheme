@@ -3,28 +3,28 @@
 **A soft, editorial and beautifully customizable storefront theme for independent brands that want
 their online shop to feel as thoughtful as their products.**
 
-Petal & Form is a free, GPL-licensed WordPress **block theme** for handmade and boutique stores —
+Petal & Form is a free, GPL licensed WordPress **block theme** for handmade and boutique stores
 ceramics, candles, stationery, jewelry, gifts and home goods. It pairs a pastel editorial design
 system with native Site Editor customization and WooCommerce block templates.
 
-> Status: **0.1.0 — development release.** Runtime-tested in WordPress Playground (WordPress 7.1.3,
+> Status: **0.1.0 — development release.** Runtime tested in WordPress Playground (WordPress 7.1.3,
 > WooCommerce 11.2.1). Not yet tested on a production host or submitted to WordPress.org.
 > See [docs/test-results.md](docs/test-results.md) for exactly what has and hasn't been tested.
 
 ## Features
 
-- **Three style variations** — Blush Atelier (default), Sage & Oat, Lavender Studio. Each changes
+- **Three style variations**  Blush Atelier (default), Sage & Oat, Lavender Studio. Each changes
   palette, corner radius, button shape and heading details, not just colours.
 - **33 block patterns**, all built from core/WooCommerce blocks and fully editable:
   - Storefront: editorial hero, shop by category, featured collection, bestsellers, newsletter invitation, custom-order banner
   - Storytelling: meet the maker, materials, behind the scenes, care guide, brand values, custom-order process, testimonials (placeholder only)
-  - **Inspiration board** — Pinterest-style masonry in pure CSS, for editorial content (never the product grid)
-  - **Gift finder** landing page — by recipient, occasion, budget; personalised gifts; gift wrapping
+  - **Inspiration board** — Pinterest style masonry in pure CSS, for editorial content (never the product grid)
+  - **Gift finder** landing page by recipient, occasion, budget; personalised gifts; gift wrapping
   - Full pages: about, contact, FAQ, shipping, returns, legal placeholder
 - **WooCommerce templates**: shop/category/tag archive, product search, single product (gallery,
   variations, stock, collapsible shipping/returns/care notes, reviews, related products). Cart,
   checkout and account use WooCommerce's own templates, restyled.
-- **No theme JavaScript**, no external requests, two self-hosted OFL fonts (WOFF2, unicode-range subset).
+- **No theme JavaScript**, no external requests, two self hosted OFL fonts (WOFF2, unicode-range subset).
 - **Accessibility built into the tokens**: every text/background pairing checked ≥ 4.5:1 in all palettes,
   a single consistent focus ring, reduced-motion support, 44px header tap targets.
 - **Works without WooCommerce** — product sections simply disappear.
